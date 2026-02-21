@@ -1,5 +1,5 @@
 //Common -> array, object
-//TS Primitives: class, interface, type alias, enam, tuple
+//TS Primitives or reference type: class, interface, type alias, enam, tuple
 
 // let bazarList: string[] = ["eggs", "potato", "fish"];
 // bazarList.push("12");
@@ -15,3 +15,42 @@ let couple: [string, string] = ["husband", "wife"];
 let nameAndRoll: [string, number] = ["shaqibul", 1];
 //nameAndRoll[0] = 45; //throws error
 let destination: [string, string, number] = ["dhaka", "ctg", 6];
+
+//reference type : object
+//implicit
+// const user = {
+//   firstName: "Shaqibul",
+//   middleName: "Islam",
+//   lastName: "Mabiu",
+// };
+//explicit
+// const user: {
+//   organization: "Programming Hero"; //value fixed -->literal type
+//   firstName: string;
+//   middleName?: string; //optional type
+//   lastName: string;
+//   isMarried: boolean;
+// } = {
+//   organization: "Programming Hero",
+//   firstName: "Shaqibul",
+//   lastName: "Mabiu",
+//   isMarried: false,
+// };
+
+// console.log(user);
+
+//another way
+const user: {
+  readonly organization: string; //access modifier
+  firstName: string;
+  middleName?: string; //optional type
+  lastName: string;
+  isMarried: boolean;
+} = {
+  organization: "Programming Hero",
+  firstName: "Shaqibul",
+  lastName: "Mabiu",
+  isMarried: false,
+};
+
+// console.log(user);

@@ -44,7 +44,7 @@ const user2: User = {
 };
 
 type IsAdmin = true;
-const isAmin: isAdmin = true;
+const isAmin: IsAdmin = true;
 
 type Name = string;
 const myName: Name = "123";

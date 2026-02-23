@@ -54,3 +54,37 @@ const user: {
 };
 
 // console.log(user);
+
+//tuple
+let tuple: [string, number] = ["av", 1];
+
+//enum--> enumeration
+// enum TrafficLight {
+//   RED, //Red
+//   YELLOW,
+//   GREEN,
+// }
+// enum ROLE {
+//   Admin,
+//   SuperAdmin,
+// }
+//let signal: TrafficLight = TrafficLight.BLUE;
+//if(ROLE.Admin === 'Admin')
+//let signal: TrafficLight = TrafficLight.RED;
+//if(signal ===)
+//console.log(signal);
+
+//any --> disables the type
+let box: any = "hello";
+box = 5;
+
+//void -> when function doesn't return anything
+const greet = (): void => {
+  console.log("Good Morning");
+};
+
+greet();
+
+function add(a: number, b: number): number {
+  return a + b;
+}

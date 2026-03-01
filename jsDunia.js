@@ -1,3 +1,5 @@
+////node --watch src/constraints.ts
+
 let userName = "Neil";
 userName = 123456;
 

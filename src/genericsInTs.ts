@@ -21,7 +21,8 @@ const coords2: Coords<string, number> = ["20", 30];
 const coords3: Coords<string, string> = ["20", "30"];
 
 //array of obj
-const userList: GenericArray<{ name: string; age: number }> = [
+type User = { name: string; age: number };
+const userList: GenericArray<User> = [
   { name: "neil", age: 24 },
   { name: "shaqib", age: 34 },
 ];

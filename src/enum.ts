@@ -16,4 +16,17 @@ const canEdit = (role: UserRoles) => {
 
 const isEditPermissible = canEdit(UserRoles.Admin);
 
-console.log(isEditPermissible);
+//console.log(isEditPermissible);
+
+enum Status {
+  Pending = "pending",
+  Completed = "completed",
+}
+
+const isDone = (status: Status) => {
+  return status === Status.Completed
+    ? "---------Done---------"
+    : "----------working-----------";
+};
+
+console.log(isDone(Status.Pending));

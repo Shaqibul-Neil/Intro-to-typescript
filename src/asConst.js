@@ -4,15 +4,13 @@
 //   Editor = "editor",
 //   Viewer = "viewer",
 // }
-
 // const UserRoles = {
 //   Admin: "Admin",
 //   Editor: "Editor",
 //   Viewer: "Viewer",
 // } as const;
-
 /**
- * 
+ *
  * UserRoles = {
  readonly Admin: "admin",
   readonly Editor: "editor",
@@ -28,46 +26,23 @@
   Viewer: "viewer",
 }
 
-keyof typeof UserRoles -->string literal create korbe 
+keyof typeof UserRoles -->string literal create korbe
 "admin" | "editor" |"viewer"
   */
-
 // const canEdit = (role: keyof typeof UserRoles) => {
 //   if (role === UserRoles.Admin || role === UserRoles.Editor) return true;
 //   return false;
 // };
-
 // const isEditPermissible = canEdit(UserRoles.Admin);
-
-const UserRoles = {
-  Admin: "ADMIN",
-  Editor: "EDITOR",
-  Viewer: "VIEWER",
-} as const;
-
-/**
- * 
- * typeof UserRoles
-    {
-  Admin: "ADMIN",
-  Editor: "EDITOR",
-  Viewer: "VIEWER",
-}
-  keyof typeof UserRoles eta likhle pai 
-  'Admin'|'Editor'|'Viewer'
-now-->
-  'ADMIN'|'EDITOR'|'VIEWER'
-  UserRoles['Admin']= 'ADMIN'
-
- typeof UserRoles [keyof typeof UserRoles] eta likhle 
-  'ADMIN'|'EDITOR'|'VIEWER'
- *  
- */
-
-const canEdit = (role: (typeof UserRoles)[keyof typeof UserRoles]) => {
-  if (role === UserRoles.Admin || role === UserRoles.Editor) return true;
-  return false;
+var UserRoles = {
+    Admin: "Admin",
+    Editor: "Editor",
+    Viewer: "Viewer",
 };
-
-const isEditPermissible = canEdit(UserRoles.Admin);
+var canEdit = function (role) {
+    if (role === UserRoles.Admin || role === UserRoles.Editor)
+        return true;
+    return false;
+};
+var isEditPermissible = canEdit(UserRoles.Admin);
 console.log(isEditPermissible);

@@ -1,3 +1,4 @@
+/*
 const arrayOfNum: number[] = [1, 2, 3];
 const arrayOfStr: string[] = ["1", "2", "3"];
 
@@ -48,4 +49,28 @@ type Area<T> = {
 const area1: Area<{ height: number; width: string }> = {
   height: 50,
   width: "50",
+};
+ */
+
+type AreaOfStr = {
+  height: number;
+  width: string;
+};
+// type AreaOfNum = {
+//   [key in keyof AreaOfStr]: AreaOfStr[key];
+// };
+
+// const xyz: AreaOfNum = {
+//   height: 4,
+//   width: "string",
+// };
+
+//generic
+type Area<T> = {
+  [key in keyof T]: T[key];
+};
+
+const area1: Area<AreaOfStr> = {
+  height: 5,
+  width: "5",
 };

@@ -73,4 +73,22 @@
 // let stdName: string = "Shaqibul";
 
 //****************************************** */
-//generic
+//generic--syntax
+// function fName<T>(value: T): T {
+//   return value;
+// }
+//fName<T>()
+// function greet<T>(value: T): T {
+//   return value;
+// }
+// let result = greet<string>("GM");
+// let result2 = greet<number>(10);
+// console.log(result, result2);
+// const getFirst = <T>(arr: T[]): T | undefined => {
+//   return arr[0];
+// };
+// let num = [1, 2, 3];
+// let name = ["Rifat", "Neil"];
+
+// console.log(getFirst<number>(num));
+// console.log(getFirst<string>(name));

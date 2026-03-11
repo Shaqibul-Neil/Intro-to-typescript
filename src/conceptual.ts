@@ -92,3 +92,21 @@
 
 // console.log(getFirst<number>(num));
 // console.log(getFirst<string>(name));
+
+//****************************************** */
+//extend
+// function length<T extends { length: number }>(value: T): void {
+//   console.log(value.length);
+// }
+// let name = ["Rifat", "Neil"];
+// length([10, 2]);
+// length("Neil");
+
+//****************************************** */
+//Rest spread
+
+// function add(...num: number[]): number {
+//   console.log(num);
+//   return num.reduce((a, b) => a + b, 0);
+// }
+// console.log(add(5));

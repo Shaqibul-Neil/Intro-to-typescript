@@ -33,3 +33,44 @@
 // }
 
 //****************************************** */
+
+// function loop(): never {
+//   while (true) {
+//     console.log("forever");
+//   }
+// }
+// let box: unknown = "hello";
+// console.log(typeof box);
+// if (typeof box === "string") console.log(box.toUpperCase());
+// box = 3;
+// console.log(typeof box);
+// if (typeof box === "string") console.log(box.toUpperCase());
+// else console.log("number----");
+
+//****************************************** */
+
+//Union(a or b) & Intersection(a & b)
+
+// let data: string | number;
+// data = "hello";
+// data = 5;
+
+// type TPersonName = { name: string };
+// type TPersonAge = { age: number };
+
+// type TPerson = TPersonName & TPersonAge;
+// let person: TPerson = {
+//   name: "Shaqib",
+//   age: 34,
+// };
+
+//****************************************** */
+//type alias
+
+// type TStdRoll = number;
+
+// let stdRoll: TStdRoll = 1;
+// let stdName: string = "Shaqibul";
+
+//****************************************** */
+//generic

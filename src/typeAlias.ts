@@ -1,4 +1,4 @@
-type User = {
+type TUser = {
   id: number;
   name: {
     firstName: string;
@@ -13,7 +13,7 @@ type User = {
   };
 };
 
-const user1: User = {
+const user1: TUser = {
   id: 123,
   name: {
     firstName: "Neil",
@@ -28,7 +28,7 @@ const user1: User = {
   },
 };
 
-const user2: User = {
+const user2: TUser = {
   id: 123,
   name: {
     firstName: "Shaqibul",
@@ -43,12 +43,12 @@ const user2: User = {
   },
 };
 
-type IsAdmin = true;
-const isAmin: IsAdmin = true;
+type TIsAdmin = true;
+const isAmin: TIsAdmin = true;
 
-type Name = string;
-const myName: Name = "123";
+type TName = string;
+const myName: TName = "123";
 
 //type alias in function
-type AddFunc = (num1: number, num2: number) => number;
-const add: AddFunc = (num1, num2) => num1 + num2;
+type TAddFunc = (num1: number, num2: number) => number;
+const add: TAddFunc = (num1, num2) => num1 + num2;

@@ -39,4 +39,9 @@ const {
 console.log(myFirstName);
 console.log(firstPart);
 console.log(lastPart);
+
+
+const schoolFriends: string[] = ["pintu", "rintu", "bantu"];
+const [, , best] = schoolFriends;
+console.log(best);
 */

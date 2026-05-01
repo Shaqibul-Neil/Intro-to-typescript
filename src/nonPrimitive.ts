@@ -88,7 +88,7 @@ greet();
 function add(a: number, b: number): number {
   return a + b;
 }
-*/
+
 //array
 let bazarList: (string | number)[] = ["eggs", "milk", 12];
 
@@ -97,3 +97,36 @@ let coordinate: [number, number] = [20, 30];
 let coordinates: [string, number, boolean] = ["x", 30, true];
 
 let status: [string, number[]] = ["x", [5, 6]];
+*/
+
+//Literal Type
+// const user: {
+//   organization: "Programming Hero";
+//   firstName: string;
+//   middleName: string;
+//   lastName: string;
+//   isMarried: boolean;
+// } = {
+//   organization: "Programming Hero",
+//   firstName: "Shaqibul",
+//   middleName: "Islam",
+//   lastName: "Mabiu",
+//   isMarried: false,
+// };
+
+//Access Modifier
+// const user: {
+//   readonly organization: string;
+//   firstName: string;
+//   middleName: string;
+//   lastName: string;
+//   isMarried: boolean;
+// } = {
+//   organization: "Programming Hero",
+//   firstName: "Shaqibul",
+//   middleName: "Islam",
+//   lastName: "Mabiu",
+//   isMarried: false,
+// };
+//Cannot assign to 'organization' because it is a read-only property.ts(2540)
+//user.organization = "abc";

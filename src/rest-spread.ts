@@ -4,7 +4,7 @@ const schoolFriends: string[] = ["pintu", "rintu", "bantu"];
 const collegeFriends: string[] = ["poltu", "boltu"];
 
 friends.push(...schoolFriends);
-
+console.log(friends);
 const user = { name: "neil", phone: "01545121454" };
 
 const otherInfo = { age: 32, hobby: "coding", favColor: "blue" };
@@ -13,6 +13,7 @@ const userInfo = { ...user, ...otherInfo };
 
 //rest
 const sendInvite = (...friends: string[]) => {
+  console.log(friends);
   friends.forEach((f: string) => console.log(`Send Invitation to ${f}`));
 };
 

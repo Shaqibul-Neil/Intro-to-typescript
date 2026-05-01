@@ -1,17 +1,45 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const user = {
-    id: 1,
-    name: {
-        firstName: "neil",
-        lastName: "juneja",
-    },
-    gender: "male",
-    favColor: "blue",
+/*const user = {
+  id: 1,
+  name: {
+    firstName: "neil",
+    lastName: "juneja",
+  },
+  gender: "male",
+  favColor: "blue",
 };
-const { name: { firstName: myFirstName }, } = user;
+
+const {
+  name: { firstName: myFirstName },
+} = user;
+
 //console.log(myFirstName);
-const schoolFriends = ["pintu", "rintu", "bantu"];
+
+const schoolFriends: string[] = ["pintu", "rintu", "bantu"];
+
 const [, mybest] = schoolFriends;
 console.log(mybest);
+
+
+const user = {
+  id: 1,
+  name: {
+    firstName: "neil",
+    lastName: { firstPart: "june", lastPart: "ja" },
+  },
+  gender: "male",
+  favColor: "blue",
+};
+
+const {
+  name: {
+    firstName: myFirstName,
+    lastName: { firstPart, lastPart },
+  },
+} = user;
+console.log(myFirstName);
+console.log(firstPart);
+console.log(lastPart);
+*/
 //# sourceMappingURL=destructure.js.map

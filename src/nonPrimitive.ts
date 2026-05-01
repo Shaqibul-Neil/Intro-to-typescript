@@ -95,3 +95,5 @@ let bazarList: (string | number)[] = ["eggs", "milk", 12];
 //tuple
 let coordinate: [number, number] = [20, 30];
 let coordinates: [string, number, boolean] = ["x", 30, true];
+
+let status: [string, number[]] = ["x", [5, 6]];

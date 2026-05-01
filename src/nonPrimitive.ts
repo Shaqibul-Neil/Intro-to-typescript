@@ -1,6 +1,6 @@
 //Common -> array, object
-//TS Primitives or reference type: class, interface, type alias, enam, tuple
-
+//TS Primitives or reference type: class, interface, type alias, enum, tuple
+/*
 // let bazarList: string[] = ["eggs", "potato", "fish"];
 // bazarList.push("12");
 
@@ -88,3 +88,10 @@ greet();
 function add(a: number, b: number): number {
   return a + b;
 }
+*/
+//array
+let bazarList: (string | number)[] = ["eggs", "milk", 12];
+
+//tuple
+let coordinate: [number, number] = [20, 30];
+let coordinates: [string, number, boolean] = ["x", 30, true];

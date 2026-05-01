@@ -109,4 +109,4 @@
 //   console.log(num);
 //   return num.reduce((a, b) => a + b, 0);
 // }
-// console.log(add(5));
+// console.log(add(4));

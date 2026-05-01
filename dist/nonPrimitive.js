@@ -1,18 +1,22 @@
 "use strict";
 //Common -> array, object
-//TS Primitives or reference type: class, interface, type alias, enam, tuple
-Object.defineProperty(exports, "__esModule", { value: true });
+//TS Primitives or reference type: class, interface, type alias, enum, tuple
+/*
 // let bazarList: string[] = ["eggs", "potato", "fish"];
 // bazarList.push("12");
+
 //if i want both number and string in an array
-let bazarList = ["eggs", 12, "potato", "fish"];
+let bazarList: (string | number)[] = ["eggs", 12, "potato", "fish"];
 bazarList.push(12);
+
 //tuple --> when i fix how many elements will be in an array-->must maintain pattern
-let coordinates = [20, 30];
-let couple = ["husband", "wife"];
-let nameAndRoll = ["shaqibul", 1];
+let coordinates: [number, number] = [20, 30];
+let couple: [string, string] = ["husband", "wife"];
+
+let nameAndRoll: [string, number] = ["shaqibul", 1];
 //nameAndRoll[0] = 45; //throws error
-let destination = ["dhaka", "ctg", 6];
+let destination: [string, string, number] = ["dhaka", "ctg", 6];
+
 //reference type : object
 //implicit
 // const user = {
@@ -33,17 +37,28 @@ let destination = ["dhaka", "ctg", 6];
 //   lastName: "Mabiu",
 //   isMarried: false,
 // };
+
 // console.log(user);
+
 //another way
-const user = {
-    organization: "Programming Hero",
-    firstName: "Shaqibul",
-    lastName: "Mabiu",
-    isMarried: false,
+const user: {
+  readonly organization: string; //access modifier
+  firstName: string;
+  middleName?: string; //optional type
+  lastName: string;
+  isMarried: boolean;
+} = {
+  organization: "Programming Hero",
+  firstName: "Shaqibul",
+  lastName: "Mabiu",
+  isMarried: false,
 };
+
 // console.log(user);
+
 //tuple
-let tuple = ["av", 1];
+let tuple: [string, number] = ["av", 1];
+
 //enum--> enumeration
 // enum TrafficLight {
 //   RED, //Red
@@ -59,15 +74,60 @@ let tuple = ["av", 1];
 //let signal: TrafficLight = TrafficLight.RED;
 //if(signal ===)
 //console.log(signal);
+
 //any --> disables the type
-let box = "hello";
+let box: any = "hello";
 box = 5;
+
 //void -> when function doesn't return anything
-const greet = () => {
-    console.log("Good Morning");
+const greet = (): void => {
+  console.log("Good Morning");
 };
+
 greet();
-function add(a, b) {
-    return a + b;
+
+function add(a: number, b: number): number {
+  return a + b;
 }
+
+//array
+let bazarList: (string | number)[] = ["eggs", "milk", 12];
+
+//tuple
+let coordinate: [number, number] = [20, 30];
+let coordinates: [string, number, boolean] = ["x", 30, true];
+
+let status: [string, number[]] = ["x", [5, 6]];
+*/
+Object.defineProperty(exports, "__esModule", { value: true });
+//Literal Type
+// const user: {
+//   organization: "Programming Hero";
+//   firstName: string;
+//   middleName: string;
+//   lastName: string;
+//   isMarried: boolean;
+// } = {
+//   organization: "Programming Hero",
+//   firstName: "Shaqibul",
+//   middleName: "Islam",
+//   lastName: "Mabiu",
+//   isMarried: false,
+// };
+//Access Modifier
+// const user: {
+//   readonly organization: string;
+//   firstName: string;
+//   middleName: string;
+//   lastName: string;
+//   isMarried: boolean;
+// } = {
+//   organization: "Programming Hero",
+//   firstName: "Shaqibul",
+//   middleName: "Islam",
+//   lastName: "Mabiu",
+//   isMarried: false,
+// };
+//Cannot assign to 'organization' because it is a read-only property.ts(2540)
+//user.organization = "abc";
 //# sourceMappingURL=nonPrimitive.js.map

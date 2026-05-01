@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-//constrain: strict rules deya
 const addStudentToCourse = (studentInfo) => {
     return { course: "Next level", ...studentInfo };
 };
@@ -19,9 +18,9 @@ const student2 = {
     isRich: true,
     hasWife: true,
 };
-const student3 = { hasWatch: true };
+const student3 = { id: 4, name: "a", hasWatch: true };
 const response1 = addStudentToCourse(student1);
 const response2 = addStudentToCourse(student2);
 const response3 = addStudentToCourse(student3);
-console.log({ response1, response2 });
+console.log({ response1, response2, response3 });
 //# sourceMappingURL=constraints.js.map

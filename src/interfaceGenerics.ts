@@ -170,7 +170,7 @@ const addStudentToCourse = <T>(studentInfo: T) => {
 const response1 = addStudentToCourse(student1);
 const response2 = addStudentToCourse(student2);
 console.log({ response1, response2 });
-*/
+
 
 //Constraint in typescript
 interface IStudentInfo {
@@ -190,9 +190,15 @@ const student2 = {
   isMarried: true,
 };
 
-const student3 = { id: 1230, name: "y0", hasWatch: true };
+const student3 = {
+  id: 1230,
+  name: "y0",
+  hasWatch: true,
+};
 
-const addStudentToCourse = <T extends IStudentInfo>(studentInfo: T) => {
+const addStudentToCourse = <T extends IStudentInfo>(
+  studentInfo: T,
+): T & { course: string } => {
   return {
     course: "Next level",
     ...studentInfo,
@@ -203,3 +209,48 @@ const response1 = addStudentToCourse(student1);
 const response2 = addStudentToCourse(student2);
 const response3 = addStudentToCourse(student3);
 console.log({ response1, response2 });
+*/
+
+//keyOf constraint with generics
+type TRichPeopleVehicles = {
+  car: string;
+  bike: string;
+  cng: string;
+};
+
+type TMyVehicles1 = keyof TRichPeopleVehicles;
+const myVehicles: TMyVehicles1 = "bike";
+
+interface IUser {
+  id: number;
+  name: string;
+  address: { city: string };
+}
+
+const user: IUser = {
+  id: 222,
+  name: "neil",
+  address: {
+    city: "dhaka",
+  },
+};
+// const myName = user.name;
+// const myName2 = user["name"];
+
+const getPropertyFromObj = <T>(obj: T, key: keyof T) => {
+  return obj[key];
+};
+
+const product = {
+  brand: "hp",
+};
+
+const student = {
+  id: 123,
+  class: "Four",
+};
+
+const result = getPropertyFromObj(user, "name");
+const result2 = getPropertyFromObj(product, "brand");
+const result3 = getPropertyFromObj(student, "class");
+console.log(result);

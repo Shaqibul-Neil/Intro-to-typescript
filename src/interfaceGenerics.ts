@@ -56,3 +56,68 @@ const userList: GenericObj<TUser> = [
   { name: "neil", age: 24 },
   { name: "shaqib", age: 34 },
 ];
+
+//Generics with interface
+interface TDeveloper<T, X = null> {
+  name: string;
+  salary: number;
+  device: {
+    brand: string;
+    model: string;
+    releasedYear: string;
+  };
+  smartWatch: T;
+  bike: X;
+}
+
+interface TSmartWatch {
+  heartRate: string;
+  stopWatch: boolean;
+}
+
+interface TBrandWatch extends TSmartWatch {
+  callOption: boolean;
+  calculator: boolean;
+  aiFeature: boolean;
+}
+
+interface TBike {
+  brand: string;
+  engineCapacity: string;
+}
+
+const poorDeveloper: TDeveloper<TSmartWatch, TBike> = {
+  name: "Poor",
+  salary: 10000,
+  device: {
+    brand: "lenovo",
+    model: "12EC",
+    releasedYear: "2004",
+  },
+  smartWatch: {
+    heartRate: "84",
+    stopWatch: true,
+  },
+  bike: {
+    brand: "yamaha",
+    engineCapacity: "200cc",
+  },
+};
+
+const richDeveloper: TDeveloper<TBrandWatch> = {
+  name: "Rich",
+  salary: 100000,
+  device: {
+    brand: "HP",
+    model: "45W",
+    releasedYear: "2026",
+  },
+  smartWatch: {
+    heartRate: "84",
+    stopWatch: true,
+    callOption: true,
+    aiFeature: true,
+    calculator: true,
+  },
+  bike: null,
+};

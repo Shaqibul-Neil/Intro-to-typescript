@@ -271,7 +271,7 @@ const canEdit = (role: TRole) => {
 
 const isEditPermissible = canEdit(TRole.Admin);
 console.log(isEditPermissible);
-*/
+
 
 //As Const assertion alternative of ENUM
 const TRole = {
@@ -287,3 +287,21 @@ const canEdit = (role: (typeof TRole)[keyof typeof TRole]) => {
 
 const isEditPermissible = canEdit(TRole.Admin);
 console.log(isEditPermissible);
+*/
+
+//Explore conditional type
+type A = null;
+type B = undefined;
+
+type C = A extends number ? true : B extends undefined ? true : false;
+
+type TRichPeopleVehicles = {
+  bike: string;
+  car: string;
+  ship: string;
+};
+
+type TCheckVehicle<T> = T extends keyof TRichPeopleVehicles ? true : false;
+
+type THasBike = TCheckVehicle<"bike">;
+type THasTractor = TCheckVehicle<"tractor">;

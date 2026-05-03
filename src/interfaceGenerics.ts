@@ -30,7 +30,7 @@ interface IAdd {
 
 const add: IAdd = (num1, num2) => num1 + num2;
 
-*/
+
 //Generics in typescript
 type GenericArray<T> = Array<T>;
 
@@ -67,7 +67,7 @@ interface TDeveloper<T, X = null> {
     releasedYear: string;
   };
   smartWatch: T;
-  bike: X;
+  bike?: X;
 }
 
 interface TSmartWatch {
@@ -119,5 +119,87 @@ const richDeveloper: TDeveloper<TBrandWatch> = {
     aiFeature: true,
     calculator: true,
   },
-  bike: null,
 };
+
+//Generics with function
+
+type TGenericArray<T> = (value: T) => Array<T>;
+
+const createArrayStr: TGenericArray<string> = (value: string) => [value];
+
+const createArrayObj: TGenericArray<{ id: number; name: string }> = (value: {
+  id: number;
+  name: string;
+}) => [value];
+
+console.log(createArrayStr("hello"));
+console.log(createArrayObj({ id: 123, name: "neil" }));
+
+const createGeneric = <T>(value: T) => [value];
+const createArrayNum = createGeneric(222);
+console.log(createArrayNum);
+
+//Tuple
+const createArrayTuple = <X, Y>(param1: X, param2: Y): [X, Y] => [
+  param1,
+  param2,
+];
+
+const createTuple = createArrayTuple(3, "4");
+console.log(createTuple);
+
+const student1 = {
+  id: 123,
+  name: "x",
+  hasPen: true,
+};
+const student2 = {
+  id: 123,
+  name: "y",
+  hasCar: true,
+  isMarried: true,
+};
+
+const addStudentToCourse = <T>(studentInfo: T) => {
+  return {
+    course: "Next level",
+    ...studentInfo,
+  };
+};
+
+const response1 = addStudentToCourse(student1);
+const response2 = addStudentToCourse(student2);
+console.log({ response1, response2 });
+*/
+
+//Constraint in typescript
+interface IStudentInfo {
+  id: number;
+  name: string;
+}
+
+const student1 = {
+  id: 123,
+  name: "x",
+  hasPen: true,
+};
+const student2 = {
+  id: 123,
+  name: "y",
+  hasCar: true,
+  isMarried: true,
+};
+
+const student3 = { id: 1230, name: "y0", hasWatch: true };
+
+const addStudentToCourse = <T extends IStudentInfo>(studentInfo: T) => {
+  return {
+    course: "Next level",
+    ...studentInfo,
+  };
+};
+
+const response1 = addStudentToCourse(student1);
+const response2 = addStudentToCourse(student2);
+const response3 = addStudentToCourse(student3);
+console.log({ response1, response2 });

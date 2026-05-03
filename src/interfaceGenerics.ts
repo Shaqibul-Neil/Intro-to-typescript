@@ -209,7 +209,7 @@ const response1 = addStudentToCourse(student1);
 const response2 = addStudentToCourse(student2);
 const response3 = addStudentToCourse(student3);
 console.log({ response1, response2 });
-*/
+
 
 //keyOf constraint with generics
 type TRichPeopleVehicles = {
@@ -254,3 +254,20 @@ const result = getPropertyFromObj(user, "name");
 const result2 = getPropertyFromObj(product, "brand");
 const result3 = getPropertyFromObj(student, "class");
 console.log(result);
+*/
+
+//Explore Enum
+//type TRole = "admin" | "editor" | "viewer";
+
+enum TRole {
+  Admin = "admin",
+  Editor = "editor",
+  Viewer = "viewer",
+}
+const canEdit = (role: TRole) => {
+  if (role === TRole.Admin || role === TRole.Editor) return true;
+  else false;
+};
+
+const isEditPermissible = canEdit(TRole.Admin);
+console.log(isEditPermissible);

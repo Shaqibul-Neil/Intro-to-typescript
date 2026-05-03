@@ -287,7 +287,7 @@ const canEdit = (role: (typeof TRole)[keyof typeof TRole]) => {
 
 const isEditPermissible = canEdit(TRole.Admin);
 console.log(isEditPermissible);
-*/
+
 
 //Explore conditional type
 type A = null;
@@ -305,3 +305,239 @@ type TCheckVehicle<T> = T extends keyof TRichPeopleVehicles ? true : false;
 
 type THasBike = TCheckVehicle<"bike">;
 type THasTractor = TCheckVehicle<"tractor">;
+
+
+//Explore mapped types
+
+const arrayOfNum: number[] = [1, 2, 3];
+const arrayOfStr: string[] = ["1", "2", "3"];
+
+const arrayOfStrMap: string[] = arrayOfNum.map((num) => num.toString());
+console.log(arrayOfStrMap);
+
+type TAreaOfNum = {
+  height: number;
+  width: number;
+};
+
+type THeight = TAreaOfNum["height"];
+
+// type TAreaOfStr = {
+//   height: string;
+//   width: string;
+// };
+
+type TAreaOfStr = {
+  [key in keyof TAreaOfNum]: string;
+};
+
+//generic
+type TArea<T> = {
+  [key in keyof T]: T[key];
+};
+
+const area1: TArea<{ height: number; width: string }> = {
+  height: 50,
+  width: "50",
+};
+
+//Explore Utility types
+const obj: Record<string, unknown> = {};
+type TProduct = {
+  name: string;
+  price: number;
+  brand: string;
+  color?: string;
+  stock: number;
+};
+
+type TProductSummary = Pick<TProduct, "name" | "price" | "stock">;
+
+type TProductWithoutStock = Omit<TProduct, "stock">;
+
+type TProductWithColor = Required<TProduct>;
+type TOptionalProduct = Partial<TProduct>;
+type TReadOnlyProduct = Readonly<TProduct>;
+*/
+
+//TASK 1: Product System (Utility Types)
+
+type TProduct = {
+  id: number;
+  name: string;
+  price: number;
+  brand: string;
+  stock: number;
+  color?: string;
+};
+
+type TProductCard = Pick<TProduct, "name" | "price" | "brand">;
+type TProductUpdate = Pick<TProduct, "id"> & Partial<Omit<TProduct, "id">>;
+type TProductSafe = Readonly<TProduct>;
+
+//TASK 2: Generic API Wrapper
+// Create a generic function:
+
+// Requirements:
+// takes any type T
+// returns:
+// {
+//   success: true,
+//   data: T
+// }
+
+const genericFunction = <T>(value: T): { success: true; data: T } => {
+  return {
+    success: true,
+    data: value,
+  };
+};
+
+const product = genericFunction({ id: 1, name: "phone" });
+console.log(product);
+const strings = genericFunction(["a", "b", "c"]);
+console.log(strings);
+
+//TASK 3: Constraint System (Real-world)
+interface IUser {
+  id: number;
+  name: string;
+}
+
+const updateUser = <T extends IUser>(data: T): T & { updatedAt: string } => {
+  return { ...data, updatedAt: new Date().toISOString() };
+};
+
+//TASK 4: Key Extractor (keyof mastery)
+type TCar = {
+  brand: string;
+  model: string;
+  year: number;
+};
+
+const car = {
+  brand: "abc",
+  model: "hab",
+  year: 15,
+};
+
+const getValue = <T, K extends keyof T>(obj: T, key: K): T[K] => {
+  return obj[key];
+};
+
+getValue(car, "brand");
+getValue(car, "year");
+
+//TASK 5: Tuple Builder (advanced generic)
+type createPair = <Y>(a: string, b: Y) => [string, Y];
+
+//TASK 6: Mapping Type
+//Rules:
+
+// make all values optional BUT keep keys same
+// do NOT use Partial directly (build manually using mapped types)
+
+type TTheme = {
+  primary: string;
+  background: string;
+  border: string;
+};
+
+type TOptionalTheme<T> = {
+  [key in keyof T]?: T[key];
+};
+
+//TASK 7: Bonus Challenge
+type TApiResponse<T> = {
+  status: number;
+  data: T;
+  error?: string;
+};
+const wrapResponse = <T>(data: T): TApiResponse<T> => {
+  return {
+    status: 200,
+    data,
+  };
+};
+
+//Task 9: The Wrapper
+type TDataType<T> = T extends any[] ? "Large" : "Small";
+type Test1 = TDataType<string[]>;
+type Test2 = TDataType<number>;
+
+//Task 8: The "Draft" Mode
+interface MyDocument {
+  title: string;
+  content: string;
+  author: string;
+}
+
+type TDraft<T> = {
+  readonly [key in keyof T]?: T[key];
+};
+
+//Task 7: Constant Literal Types
+const Colors = {
+  Primary: "RED",
+  Secondary: "BLUE",
+} as const;
+type TValidColor = (typeof Colors)[keyof typeof Colors];
+const setColor = (c: TValidColor) => {
+  console.log(c);
+};
+
+//Task 6: The Property Guard
+const products = { id: 101, name: "Keyboard", price: 50 };
+const getProductProp = <T, K extends keyof T>(obj: T, key: K): T[K] => {
+  return obj[key];
+};
+
+console.log(getProductProp(products, "price"));
+
+//Task 5: Generic Constraints
+
+const lengthMeasure = <T extends { length: number }>(value: T): number => {
+  return value.length;
+};
+console.log(
+  lengthMeasure("hello"),
+  lengthMeasure([1, 2, 3]),
+  lengthMeasure({ length: 10 }),
+);
+
+//Task 4: Type Assertion
+let secretValue: unknown = "typescript is awesome";
+const upperValue = (secretValue as string).toUpperCase();
+console.log(upperValue);
+
+//Task 3: The "Safe" Data Fetcher
+type UserResponse = {
+  info?: {
+    address?: {
+      zipCode?: string;
+    };
+  };
+};
+const getZipCode = (data: UserResponse): string => {
+  return data.info?.address?.zipCode ?? "00000";
+};
+
+//Task 2: Merging User Profiles
+type Person = { name: string; age: number };
+type JobDetails = { role: string; salary: number };
+type Employee = Person & JobDetails;
+
+const getProfile = (employee: Employee): string => {
+  return `Name: ${employee["name"]}, Role: ${employee["role"]}`;
+};
+
+//Task 1: The "Optional" Shopping Cart
+type CartItem = {
+  name: string;
+  price: number;
+  quantity?: number;
+};
+const calculateTotal = (cart: CartItem): number => {
+  const { price, quantity = 1 } = cart;
+  return price * quantity;
+};

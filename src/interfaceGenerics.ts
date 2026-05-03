@@ -254,7 +254,7 @@ const result = getPropertyFromObj(user, "name");
 const result2 = getPropertyFromObj(product, "brand");
 const result3 = getPropertyFromObj(student, "class");
 console.log(result);
-*/
+
 
 //Explore Enum
 //type TRole = "admin" | "editor" | "viewer";
@@ -265,6 +265,22 @@ enum TRole {
   Viewer = "viewer",
 }
 const canEdit = (role: TRole) => {
+  if (role === TRole.Admin || role === TRole.Editor) return true;
+  else false;
+};
+
+const isEditPermissible = canEdit(TRole.Admin);
+console.log(isEditPermissible);
+*/
+
+//As Const assertion alternative of ENUM
+const TRole = {
+  Admin: "admin",
+  Editor: "editor",
+  Viewer: "viewer",
+} as const;
+
+const canEdit = (role: (typeof TRole)[keyof typeof TRole]) => {
   if (role === TRole.Admin || role === TRole.Editor) return true;
   else false;
 };

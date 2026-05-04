@@ -84,6 +84,7 @@ teacher1.getTeach(10);
 //in, typeof
 
 //TYPEOF GUARD
+/*
 type TAlpha = number | string;
 const add = (param1: TAlpha, param2: TAlpha) => {
   return typeof param1 === "number" && typeof param2 === "number"
@@ -111,5 +112,60 @@ const getUserInfo = (user: TNormalUser | TAdminUser) => {
 };
 getUserInfo({ name: "normal", role: "admin" });
 getUserInfo({ name: "normalRole nai" });
+*/
 
-//
+//Type guard using instance of / type narrowing
+class Person {
+  constructor(
+    public name: string,
+    public age: number,
+  ) {}
+
+  getSleep(num: number) {
+    console.log(`${this.name} sleeps daily for ${num} hours`);
+  }
+}
+
+class Student extends Person {
+  constructor(name: string, age: number) {
+    super(name, age);
+  }
+  doStudy(num: number) {
+    console.log(`${this.name} studies daily for ${num} hours`);
+  }
+}
+
+class Teacher extends Person {
+  constructor(name: string, age: number) {
+    super(name, age);
+  }
+
+  takeClass(num: number) {
+    console.log(`${this.name} takes class daily for ${num} hours`);
+  }
+}
+
+//function guard
+const isStudent = (user: Person) => {
+  return user instanceof Student;
+};
+const isTeacher = (user: Person) => {
+  return user instanceof Teacher;
+};
+
+const getUserInfo = (user: Person) => {
+  if (isStudent(user)) {
+    user.doStudy(10);
+  } else if (isTeacher(user)) {
+    user.takeClass(5);
+  } else user.getSleep(8);
+};
+
+//creating instance
+const student1 = new Student("Student", 34);
+const teacher1 = new Teacher("Teacher", 34);
+const person1 = new Person("Person", 34);
+
+getUserInfo(person1);
+getUserInfo(teacher1);
+getUserInfo(student1);

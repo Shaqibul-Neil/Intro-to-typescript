@@ -17,6 +17,7 @@
 // }
 
 //Parameter Property
+/*
 class Animal {
   constructor(
     public name: string,
@@ -39,7 +40,11 @@ const Cat = new Animal("mimi", "cat", "meow meow ");
 // console.log(Dog.species);
 // console.log(Dog.sound);
 
+*/
+
 //Inheritance, the 1st pilar of OOP
+
+/*
 class Parent {
   constructor(
     public name: string,
@@ -73,3 +78,38 @@ class Teacher extends Parent {
 const teacher1 = new Teacher("Neil", 34, "Dhaka", "Teacher");
 
 teacher1.getTeach(10);
+*/
+
+//Type guard using typeof and in
+//in, typeof
+
+//TYPEOF GUARD
+type TAlpha = number | string;
+const add = (param1: TAlpha, param2: TAlpha) => {
+  return typeof param1 === "number" && typeof param2 === "number"
+    ? param1 + param2
+    : param1.toString() + param2.toString();
+};
+
+console.log(add("5", 2));
+console.log(add(5, 2));
+console.log(add(5, "2"));
+
+//IN GUARD
+type TNormalUser = {
+  name: string;
+};
+type TAdminUser = {
+  name: string;
+  role: "admin";
+};
+const getUserInfo = (user: TNormalUser | TAdminUser) => {
+  if ("role" in user) {
+    console.log(`This ${user.name} is ${user.role}`);
+  }
+  return console.log(`This ${user.name} is normal user`);
+};
+getUserInfo({ name: "normal", role: "admin" });
+getUserInfo({ name: "normalRole nai" });
+
+//
